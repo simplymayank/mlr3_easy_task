@@ -353,6 +353,8 @@ display: none;
 </div>
 
 
+<div id="load-the-required-libraries" class="section level1">
+<h1>Load the required libraries</h1>
 <pre class="r"><code>library(mlr3)
 library(mlr3oml)
 oml_task&lt;-otsk(id=59)
@@ -366,12 +368,17 @@ task_iris</code></pre>
 ##   • dbl (4): petallength, petalwidth, sepallength, sepalwidth
 ## • Target classes: Iris-setosa (33%), Iris-versicolor (33%), Iris-virginica
 ## (33%)</code></pre>
-<p>Download an open ML task</p>
-<p>Convert open ML task to mlr3 Task</p>
+<div id="download-an-open-ml-task" class="section level3">
+<h3>Download an open ML task</h3>
+</div>
+<div id="convert-open-ml-task-to-mlr3-task" class="section level3">
+<h3>Convert open ML task to mlr3 Task</h3>
 <p>output • Target: class • Properties: multiclass • Features (4): • dbl
 (4): petallength, petalwidth, sepallength, sepalwidth • Target classes:
 Iris-setosa (33%), Iris-versicolor (33%), Iris-virginica (33%)</p>
-<p>Inspect the task</p>
+</div>
+<div id="inspect-the-task" class="section level3">
+<h3>Inspect the task</h3>
 <p>Task type is classification Task is multiclass Iris-setosa (33%),
 Iris-versicolor (33%), Iris-virginica (33%) task_iris<span class="math inline">\(feature_names
 There are 4 features on the basis of which class is predicted
@@ -379,14 +386,18 @@ There are 4 features on the basis of which class is predicted
 &quot;petalwidth&quot;
 task_iris\)</span>target_names Target is class task_iris<span class="math inline">\(task_type
 task_iris\)</span>target_names</p>
-<p>Task use</p>
-<pre class="r"><code>learner&lt;-lrn(&quot;classif.rpart&quot;)
-learner$train(task_iris)
-prediction&lt;-learner$predict(task_iris)
+</div>
+<div id="task-use" class="section level3">
+<h3>Task use</h3>
+<pre class="r"><code>learner_iris&lt;-lrn(&quot;classif.rpart&quot;)
+learner_iris$train(task_iris)
+prediction&lt;-learner_iris$predict(task_iris)
 prediction$score(msr(&quot;classif.acc&quot;))</code></pre>
 <pre><code>## classif.acc 
 ##        0.96</code></pre>
-<p>#Second dataset #Download the openml task and make it mlr3 task</p>
+</div>
+<div id="second-dataset-download-the-openml-task-and-make-it-mlr3-task" class="section level2">
+<h2>Second dataset #Download the openml task and make it mlr3 task</h2>
 <pre class="r"><code>oml_task2=otsk(id=3)
 task_kr_vs_kp=as_task(oml_task2)
 task_kr_vs_kp</code></pre>
@@ -400,23 +411,29 @@ task_kr_vs_kp</code></pre>
 ##   rimmx, rkxwp, rxmsq, simpl, skach, skewr, skrxp, spcop, stlmt, thrsk, wkcti,
 ##   wkna8, wknck, wkovl, wkpos, wtoeg
 ## • Target classes: won (positive class, 52%), nowin (48%)</code></pre>
-<p>#inspect it</p>
+<div id="inspect-it" class="section level3">
+<h3>inspect it</h3>
 <p>#Target: class #• Properties: twoclass #• Features (36): # • fct
 (36): bkblk, bknwy, bkon8, bkona, bkspr, bkxbq, bkxcr, bkxwp, blxwp,
 bxqsq, cntxt, dsopp, dwipd, #hdchk, katri, mulch, qxmsq, r2ar8, reskd,
 reskr, rimmx, rkxwp, rxmsq, simpl, skach, skewr, skrxp, #spcop, stlmt,
 thrsk, wkcti, wkna8, wknck, wkovl, wkpos, wtoeg #• Target classes: won
 (positive class, 52%), nowin (48%)</p>
-<p>#Target is classifying into 2 classes #Target classes - won (positive
+<p>Target is classifying into 2 classes #Target classes - won (positive
 class, 52%), nowin (48%) # 36 Features on the basis of which class is
 predicted</p>
-<p>#Task Use</p>
-<pre class="r"><code>learner&lt;-lrn(&quot;classif.rpart&quot;)
-learner$train(task_kr_vs_kp)
-prediction&lt;-learner$predict(task_kr_vs_kp)
+</div>
+<div id="task-use-1" class="section level3">
+<h3>Task Use</h3>
+<pre class="r"><code>pred_kr&lt;-lrn(&quot;classif.rpart&quot;)
+pred_kr$train(task_kr_vs_kp)
+prediction&lt;-pred_kr$predict(task_kr_vs_kp)
 prediction$score(msr(&quot;classif.acc&quot;))</code></pre>
 <pre><code>## classif.acc 
 ##   0.9687109</code></pre>
+</div>
+</div>
+</div>
 
 
 
