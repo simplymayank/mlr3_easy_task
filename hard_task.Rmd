@@ -1,0 +1,41 @@
+---
+title: "hard_task"
+output: html_document
+---
+# Download the dataset from HF
+
+## inspect the dataset
+### choose survived column as target
+### type of target should be categorical for the task but it is integer so convert it.
+
+
+```{r}
+library(mlr3)
+data<-read.csv("C:\\Users\\mayan\\Downloads\\titanic.csv")
+str(data)
+data$Survived <- as.factor(data$Survived)
+data$Name <- NULL
+data$Sex <- as.factor(data$Sex)
+task <- as_task_classif(data, target = "Survived", id = "titanic")
+task
+```
+
+
+```{r}
+task$task_type
+task$target_names
+task$feature_names
+task$properties
+```
+
+# Use Task
+
+## Predicting the survival of passesngers based the input features
+
+```{r}
+learner <- lrn("classif.rpart")
+learner$train(task)
+prediction <- learner$predict(task)
+prediction$score(msr("classif.acc"))
+```
+
